@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>属性的判断</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function Person(name,age){
+		this.age =age;
+		this.name =name;
+		this.showAge =function(){
+			console.log("I am"+this.age +"years old"+"234444444");
+
+		}
+	}
+	Person.prototype.showName =function(){
+		console.log("I am" +this.name);
+	}
+	Person.prototype.showAge =function(){
+		console.log("I am"+this.age +"years old");
+	}
+
+	var p1 =new Person("tom",20)
+	Person.prototype.LEGS =3;
+	console.log(p1.hasOwnProperty("name"));
+	console.log(p1.hasOwnProperty("age"));
+	console.log(p1.hasOwnProperty("LEGS"));//判断其自身是否有该属性
+	console.log("LEGS" in p1);//判断原型链上是否有指定的属性
+
+	function isInPrototype(Obj,attr){
+		return !Obj.hasOwnProperty(attr) &&(attr in Obj);
+	}//判断原型链上有，自身没有的属性
+	console.log(isInPrototype("name",p1));
+	console.log(isInPrototype("age",p1));
+	console.log(isInPrototype("LEGS",p1));
+
+
+
+</script>
+</html>

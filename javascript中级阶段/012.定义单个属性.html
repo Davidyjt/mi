@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>定义单个属性</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function Person(name,age){
+		this.age =age;
+		this.name =name;
+		this.showAge =function(){
+			console.log("I am"+this.age +"years old"+"234444444");
+
+		}
+	}
+	Person.prototype.showName =function(){
+		console.log("I am" +this.name);
+	}
+	Person.prototype.showAge =function(){
+		console.log("I am"+this.age +"years old");
+	}
+
+	var p1 =new Person("tom",20)
+	Person.prototype.LEGS =3;
+	Object.defineProperty(p1, "sex",{
+		value:"female",//属性值
+		enumerable:true,//是否可以枚举，默认是false
+		// writable:true,//是否可写，默认是false
+		configurable:true//是否可删除，有修改的权限，默认是false
+
+	})
+
+	console.log(delete p1.sex)
+</script>
+</html>

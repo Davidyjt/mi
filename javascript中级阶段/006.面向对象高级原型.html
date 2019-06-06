@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>面向对象高级</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function Person(name,age){
+		this.name =name;
+		this.age =age;
+	}
+	Person.prototype.showName =function(){
+		console.log("I am" +this.name);
+	}
+	Person.prototype.showAge =function(){
+		console.log("I am"+this.age +"years old");
+	}
+	console.log('Person.prototype:::',Person.prototype)//person的原型
+	console.log('Person.prototype.constructor:::',Person.prototype.constructor)//constructor的值
+	console.log('Person.prototype.constructor ===person:::',Person.prototype.constructor ===Person)//constructor和person比较结果为true
+	console.log('Person.prototype._proto_ :::',Person.prototype.__proto__)//-proto的值-
+	console.log('object.prototype::',Object.prototype);//对象原型的值
+	console.log('Person.prototype._proto_ ===Object.prototype:::',Person.prototype.__proto__===Object.prototype);//person的-proto的值-和对象原型比较返回true
+	console.log('Person.prototype ===Object.prototype:::',Person.prototype===Object.prototype)
+
+     var p1 =new Person("tom",20)
+     var p1 =new Person("leo",20)
+     console.log('p1.__proto__',p1.__proto__)//p1的————proto__
+     console.log('p1.__proto__ ===Object.prototype',p1.__proto__ ===Object.prototype)//比较结果是false
+
+
+
+</script>
+</html>

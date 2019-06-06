@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>删除属性</title>
+</head>
+<body>
+	
+</body>
+<script>
+function Person(name,age){
+		this.age =age;
+		this.name =name;
+		this.showAge =function(){
+			console.log("I am"+this.age +"years old"+"234444444");
+
+		}
+	}
+	Person.prototype.showName =function(){
+		console.log("I am" +this.name);
+	}
+	Person.prototype.showAge =function(){
+		console.log("I am"+this.age +"years old");
+	}
+	Person.prototype.LEGS =3;
+
+	var p1 =new Person("tom",20);
+	var p2 =new Person("leo",27);//姓名必须是字符串
+	delete p1.name;
+	console.log(delete p1.name);
+	console.log(p1);
+	delete Person.prototype.LEGS;
+	console.log(p2.LEGS) //如果删除了原型上属性，则所有实例都访问不到该属性
+</script>
+</html>

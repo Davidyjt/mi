@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>访问属性</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function Person(name,age){
+		this.age =age;
+		this.name =name;
+		this.showAge =function(){
+			console.log("I am"+this.age +"years old"+"234444444");
+
+		}
+	}
+	Person.prototype.showName =function(){
+		console.log("I am" +this.name);
+	}
+	Person.prototype.showAge =function(){
+		console.log("I am"+this.age +"years old");
+	}
+
+	var p1 =new Person("tom",20);
+	var p2 =new Person("leo",27);//姓名必须是字符串
+	// p1.showAge();
+	// p1.showName();
+	console.log(p1)
+
+	p1.name ="leo";
+	p1.sex ="male";
+	console.log(p1)
+
+	// console.log(p1)
+	// Person("tom",20);
+</script>
+</html>

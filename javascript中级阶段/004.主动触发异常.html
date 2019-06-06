@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>主动触发异常</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function sum(num){
+
+		try{
+			var result =0;
+			if(isNaN(parseInt(num))){
+				throw new Error("is not a number")
+			}
+			for(var i =0;i<=num;i++){
+				result +=i;
+			}
+			return result;
+		}//有可能出现异常的代码
+		catch(err){
+			console.log(err);//捕获异常，异常处理
+
+		}
+		finally{
+			console.log("always do something....")//无论有无异常都会处理
+		}
+	}
+	function show(num){
+		return num*10
+	}
+	console.log('1:::');
+	var total=sum("a");//输出sum
+	// oBtn.onclick =function(){
+	// 	var val =oTxt.value;
+	// 	var total sum(oTxt.value);
+	// 	show(total)
+	// }
+</script>
+</html>

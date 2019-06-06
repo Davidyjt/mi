@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>运行时出错</title>
+</head>
+<body>
+	
+</body>
+<script>
+	
+	//ReferenceError 变量引用异常触发的错误
+	console.log(a)
+	//TypeError 类型使用时错误
+	var a =1;a()
+	//RangeError 递归爆栈时触发
+	function fn(){fn()};fn()
+</script>
+</html>

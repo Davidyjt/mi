@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>原型链作业</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function Person(name,age){
+		this.age =age;
+		this.name =name;
+	}
+	Person.prototype.showName =function(){
+		console.log("I am" +this.name);
+	}
+	Person.prototype.showAge =function(){
+		console.log("I am"+this.age +"years old");
+	}
+
+	var p1 =new Person("tom",20);
+	var p2 =new Person("leo",27);//姓名必须是字符串
+
+	console.log(p1)
+	Person("tom",20);
+
+
+
+	//p1,p2指向person原型
+	//person 原型里的proto指向object原型
+	//object proto原型指向null
+
+
+</script>
+</html>
