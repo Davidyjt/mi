@@ -410,6 +410,45 @@ body{
 	box-sizing: border-box;
 
 }
+.home .banner .cate-box{
+	position: relative;
+}
+.home .banner .cate-content{
+	position: absolute;
+	left: 234px;
+	top: 0px;
+	height: 100%;
+	/*background: red;*/
+	z-index: 9999999999999;
+	display: none;
+
+}
+
+.home .banner .cate-content li{
+	float: left;
+	width: 160px;
+	height: 100px;
+	background: #fff;
+	position: relative;
+
+}
+.home .banner .cate-content img{
+	width: 80px;
+	height: 100%;
+}
+.home .banner .cate-content span{
+	position: absolute;
+	top: 40px;
+	left:103px;
+	color: black;
+
+}
+.home .banner .cate-content span:active{
+	color: #ff6700;
+
+
+}
+
 .home .banner .cate-item{
 	width: 234px;
 	height: 40px;
@@ -423,7 +462,7 @@ body{
 
 
 }
-.home .banner .cate-item:hover{
+.home .banner .cate-item.active{
 	background-color: #ff6700;
 }
 .home .banner .sep{
@@ -618,28 +657,23 @@ position: relative;
 border:1px solid #5f5750;
 box-sizing: border-box;
 }
-.home .hot .col1-list .right-line:after{
+.home .hot .col1-list-item .right-line{
 	position: absolute;
-	height: 30px;
+	height: 70px;
 	width: 1px;
-	background-color: red;
+	background-color: gray;
 	top: 10px;
 	right: 0px;
-	content: "";
-	display: block;
+
 
 }
-.home .hot .col1-list .bottom-line:after{
+.home .hot .col1-list-item .bottom-line{
 	position: absolute;
 	height: 1px;
-	width: 30px;
-	background-color: red;
+	width: 70px;
+	background-color: gray;
 	top:90px;
-	right: 10px;
-	content: "";
-	display: block;
-
-
+	right: 5px
 }
 
 .home .hot .sep{
@@ -828,22 +862,25 @@ height: 50px;
 	display: inline-block;
 }
 .home .bd .col2{
-
+overflow: hidden;
 }
 .home .bd .col2 .product-list{
 	
+	width: 2000px;
+	height: 370px;
 }
 .home .bd .product-item{
 	width: 232px;
 	height: 370px;
 /*	background-color: blue;*/
-	float: left;
-	margin-right: 12px;
+	/*float: left;*/
+	margin-right: 10px;
 	text-align:center;
 	background-color: #fafafa;
 	padding:0px 12px;
 	box-sizing: border-box;
 	transition: all 500ms;
+	display: inline-block;
 	
 
 
@@ -1079,7 +1116,7 @@ height: 50px;
 	margin-right: 28px;
 
 }
-.more .more-right:hover{
+.more .tab-item-active{
 	
 	border-bottom: 2px solid #ff6700;
 }
@@ -1102,11 +1139,27 @@ height: 50px;
 	position: relative;
 	top: 16px;
 }
+.view{
+	height: 0px;
+	width: 226px;
+	background: #ff6700;
+	bottom: 0px;
+	left: 0px;
+	z-index: 999999;
+	position: absolute;
+	overflow: hidden;
+	transition: all 500ms;
+
+}
 
 .ele .product-item{
 	width: 226px;
 	height: 300px;
+	position: relative;
 	
+}
+.ele .product-item:hover .view{
+height: 100px;
 }
 .ele .col2{
 	position: relative;

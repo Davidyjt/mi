@@ -154,12 +154,16 @@ function handleHeader(){
 handleCountDown()
 function handleCountDown(){
 	var aTimenum =document.querySelectorAll(".time-num");//获取时间元素
-	var endTime = new Date("2019-06-10 23:59:59");//定义结束时间
+	var endTime = new Date("2019-06-15 15:37:59");//定义结束时间
 	var timer = null;//定义一个空timer
 
 	function handleTimer(){
 		var allSeconds =parseInt((endTime.getTime() - Date.now())/1000)//距离结束时间的秒数
+        if(allSeconds <= 0){
+        	allSeconds =0;
+        	clearTimeout(timer);//当allsecond小于等于零时为零，allseconds
 
+        }
 		var hours = parseInt(allSeconds/3600);
 		var minutes = parseInt(allSeconds % 3600 /60);
 		var second = allSeconds % 3600 % 60;//计算小时 分钟 秒
@@ -175,13 +179,56 @@ function handleCountDown(){
 		return num>=10 ? ""+num : "0"+num;
 	}
 	//设置数字格式
-
-
-
-
-
-
 }
+//处理分类面板
+handleCate();
+function handleCate(){
+	var aCate = document.querySelectorAll(".home .banner .cate-item")
+	var oCateContent =document.querySelector(".home .banner .cate-content")
+	var oCateBox =document.querySelector(".home .banner .cate-box")
+
+//循环遍历每一项监听事件
+    for(var i = 0;i<aCate.length;i++){
+    	aCate[i].index =i;
+    	aCate[i].onmouseenter =function(){
+    	for(var i = 0;i<aCate.length;i++){
+    		aCate[i].className = "cate-item";
+    		}
+    		oCateContent.style.display ="block";
+    		this.className = "cate-item active";
+
+    		//模拟加载数据
+    		loadData(this.index);
+    	}
+    	}
+    	//鼠标移出大盒子，内容消失
+    	oCateBox.onmouseleave =function(){
+    		oCateContent.style.display ="none";
+    	}
+    	//加载数据函数
+    	function loadData(index){
+		var data = aContentItemDate[index];
+		// console.log(data);
+
+		var html = "";
+			html += '<ul>'
+			for(var i = 0;i<data.length;i++){
+				html +=		'<li>';
+				html +=			'<a href="'+data[i].url+'">';
+				html +=				'<img src="'+data[i].src+'" alt="">';
+				html +=				'<span>'+data[i].name+'</span>';
+				html +=			'</a>';
+				html +=		'</li>';
+			}
+			html +=	'</ul>';
+
+		oCateContent.innerHTML = html;
+	}
+}
+
+
+
+
 
 //设置选项卡
 // handEle()
@@ -196,3 +243,101 @@ function handleCountDown(){
 // 	}
 
 // }
+//设置闪购处理列表
+handleMove()
+function handleMove(){
+
+	var aSpan =document.querySelectorAll(".flash .flash-ctrl");
+	var oProduct =document.querySelector(".col2 .product-list");
+	console.log(oProduct)
+	//点击右键向右翻页
+	aSpan[1].onclick =function(){
+		oProduct.style.marginLeft = "-980px";
+	}
+	//点击左键向左翻页
+	aSpan[0].onclick =function(){
+		oProduct.style.marginLeft = "0px";
+	}
+}
+
+//7.处理家电
+handleElec()
+function handleElec(){
+	var oProduct =document.querySelector(".ele .product-list")
+	var aTabitem = document.querySelectorAll(".ele .more .more-right");
+	for(var i =0;i<aTabitem.length;i++){
+		aTabitem[i].index =i;
+		aTabitem[i].onmouseenter =function(){
+			for(var j =0;j<aTabitem.length;j++){
+				aTabitem[j].className ="more-right"
+			}
+			this.className ="more-right tab-item-active"
+			//模拟加载数据
+			loadData(this.index)
+
+		}
+	}
+	// 
+
+
+
+
+	//加载数据函数
+	function loadData(index){
+		var data =aElecItemData[index];
+		console.log(data)
+		var html ="";
+		for(var i=0;i<data.length-1;i++){
+			html += '<li class="product-item ">'
+			html += '	<a href="'+data[i].url+'">'
+			html += '		<img src="'+data[i].src+'" alt="">'
+			html += '		<p class="product-item-name">'+data[i].name+'</p>'
+			html += '		<p class="product-item-des">'+data[i].des+'</p>'
+			html += '		<p class="price">'
+			html +='		<strong>'+data[i].price+'元</strong>'
+			html += '		<del>'+data[i].del+'</del>'
+			html += '   	</p>';
+			html +=	'	</a>';
+
+
+			if(data[i].view){
+
+			html += '     <div class="view">';
+			html +=' 		<p class="commen">'+data[i].view.commen+'</p>';
+			html +=' 		<p class="author">'+data[i].view.author+'</p>';
+			html += 	'</div>;'
+			html += '</li>'
+			}
+			html +=	'</li>';
+						}
+
+			// oProduct.innerHTML = html;
+			//单独处理最后一条数据
+			var lastData = data[data.length-1];
+			html +='<li class="product-bottom">';
+			html +=	'<a href="">';
+			html +=	'	<img src="'+lastData.topimg+'" alt="">';
+			html +='		<p class="product-item-name">'+lastData.topdes+'</p>';
+			html +='		<p class="price">';
+			html +='	<strong>'+lastData.topprice+'元</strong>元';
+				
+			html +=	'</p>';	
+			html +='	</a>';
+			html +=	'</li>';
+			html +=' <li class="product-bottom2">';
+			html +=' 	<a href="">';
+			html +='		<i class="iconfont">'+lastData.icon+'</i>';
+			html += '		<p class="product-item-name">'+lastData.bottomname+'</p>';
+			html += '		<p class="product-item-name1">'+lastData.bottomhot+'</p>';
+			html +=	'		</a>';
+			html +=	'	</li>'
+			 oProduct.innerHTML = html;
+					
+
+
+
+				
+
+
+			}
+			}
